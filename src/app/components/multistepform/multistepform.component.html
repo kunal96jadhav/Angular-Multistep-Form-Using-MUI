@@ -1,0 +1,171 @@
+<div class="container">
+  <form (ngSubmit)="submit()" [formGroup]="customerForm" (ngSubmit)="HandleSubmit()">
+    <div *ngIf="step == 1" formGroupName="customerDetails">
+      <h4>Customer Information</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>CustomerId</label>
+            <input type="text" class="form-control" placeholder="customerId" formControlName="customerId">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Customer Name</label>
+            <input type="text" class="form-control" placeholder="Customer Name" formControlName="customerName">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>CustomerDateOfBirth</label>
+            <input type="date" class="form-control" placeholder="CustomerDateOfBirth"
+              formControlName="customerDateOfBirth">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>CustomerAge</label>
+            <input type="text" class="form-control" placeholder="CustomerAge" formControlName="customerAge">
+          </div>
+        </div>
+        <div class="col-md-4 pt-4">
+          <div class="form-group">
+            <label>CustomerGender</label>
+            <!-- <input type="text" class="form-control" placeholder="CustomerGender" formControlName="customerGender"> -->
+            <mat-radio-group aria-label="Select an option" formControlName="customerGender">
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>CustomerEmail</label>
+            <input type="text" class="form-control" placeholder="CustomerEmail" formControlName="customerEmail">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>CustomerMobileNumber</label>
+            <input type="text" class="form-control" placeholder="CustomerMobileNumber"
+              formControlName="customerMobileNumber">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>CustomerAlternateMobileNumber</label>
+            <input type="text" class="form-control" placeholder="CustomerAlternateMobileNumber"
+              formControlName="customerAlternateMobileNumber">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>CustomerAmountPaidForCar</label>
+            <input type="text" class="form-control" placeholder="CustomerAmountPaidForCar"
+              formControlName="customerAmountPaidForCar">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>CustomerTotalLoanRequired</label>
+              <input type="text" class="form-control" placeholder="CustomerTotalLoanRequired"
+                formControlName="customerTotalLoanRequired">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div *ngIf="step == 2" formGroupName="eductionDetails">
+      <h4>Educational Details</h4>
+      <div class="row">
+       <div class="col-md-6">
+        <div class="form-group">
+          <label>EducationId</label>
+          <input type="text" class="form-control" placeholder="EducationaId" formControlName="educationId">
+        </div>
+       </div>
+       <div class="col-md-6">
+        <div class="form-group">
+          <label>EducationType</label>
+          <input type="text" class="form-control" placeholder="EducationType" formControlName="educationType">
+        </div>
+       </div>
+      </div>
+    </div>
+    <!--  -->
+    <div *ngIf="step == 3" formGroupName="personalDoucments">
+      <h4>Personal Documents</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <pre>
+          <label>Address Proof</label>&nbsp;
+          <input type="file" (change)="selectAddressProof($event)" formControlName="addressProof">
+        </pre>
+        </div>
+        <div class="col-md-6">
+          <pre>
+          <label>Pancard</label>&nbsp;
+          <input type="file" (change)="selectPancard($event)">
+        </pre>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <pre>
+          <label>AadharCard</label>&nbsp;
+          <input type="file" (change)="selectAadharCard($event)">
+        </pre>
+        </div>
+        <div class="col-md-6">
+          <pre>
+          <label>Photo</label>&nbsp;
+          <input type="file" (change)="selectPhoto($event)">
+        </pre>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <pre>
+          <label>Signatuer</label>&nbsp;
+          <input type="file" (change)="selectSignatuer($event)">
+        </pre>
+        </div>
+        <div class="col-md-6">
+          <pre>
+          <label>SalarySlip</label>&nbsp;
+          <input type="file" (change)="selectSalarySlip($event)">
+        </pre>
+        </div>
+      </div>
+      <!-- <h4>PersonalDoucments</h4>
+      <div class="form-group">
+        <label>AddressProof</label>
+        <input type="file" (change)="onChange($event)" formControlName="addressProof">
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label>city</label>
+        <input type="text" class="form-control" placeholder="city" formControlName="city">
+      </div>
+     
+      <div class="form-group">
+        <label>pincode</label>
+        <input type="text" class="form-control" placeholder="pincode" formControlName="pincode">
+      </div> -->
+    </div>
+    <pre></pre>
+    <a class="btn btn-sm btn-primary" *ngIf="step !=1" (click)="previous()">Previous</a>&nbsp;
+    <button type="submit" class="btn btn-sm btn-primary" *ngIf="step !=3">Submit</button>
+    <button type="submit" class="btn btn-sm btn-primary" *ngIf="step==3">Submit</button>
+    <pre>{{customerForm.value | json}}</pre>
+  </form>
+</div>
